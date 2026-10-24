@@ -1,9 +1,8 @@
 import csv
-import os
 import pymongo
 
-# Connect to MongoDB Atlas (connection string comes from the MONGODB_URI environment variable)
-client = pymongo.MongoClient(os.environ["MONGODB_URI"])
+# Connect to MongoDB Atlas
+client = pymongo.MongoClient("mongodb+srv://Kaua200202:ALs9hiUXUTc2gPpx@cluster0.qezqfwt.mongodb.net/transortdb?retryWrites=true&w=majority")
 
 db = client["transortdb"]
 collection = db["transports"]

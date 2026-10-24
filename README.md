@@ -79,19 +79,14 @@ cd transport
 
 ### 2. Configure MongoDB Atlas
 
-Set your connection string as the `MONGODB_URI` environment variable (never commit it to the repo):
+Update `src/main/resources/application.properties`:
 
-```powershell
-# PowerShell
-$env:MONGODB_URI = "mongodb+srv://USERNAME:PASSWORD@cluster0.xxxxx.mongodb.net/transortdb?retryWrites=true&w=majority"
+```properties
+spring.application.name=transport
+spring.data.mongodb.uri=mongodb+srv://USERNAME:PASSWORD@cluster0.xxxxx.mongodb.net/transortdb?retryWrites=true&w=majority
+spring.thymeleaf.cache=false
+server.port=
 ```
-
-```bash
-# bash
-export MONGODB_URI="mongodb+srv://USERNAME:PASSWORD@cluster0.xxxxx.mongodb.net/transortdb?retryWrites=true&w=majority"
-```
-
-If `MONGODB_URI` is not set, the app falls back to a local MongoDB at `mongodb://localhost:27017/transortdb`. The port defaults to `8080` (override with `PORT`).
 
 ### 3. Import the Dataset
 

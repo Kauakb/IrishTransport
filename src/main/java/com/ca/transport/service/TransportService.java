@@ -52,9 +52,4 @@ public class TransportService {
 	     public Page<Transport> getAllTransports(Pageable pageable) {
 	    	    return transportRepository.findAll(pageable);
 	     }
-
-	     //search by name
-	     public Page<Transport> searchByName(String name, Pageable pageable) {
-	    	 return transportRepository.findByCommonNameContainingIgnoreCase(name, pageable);
-	     }
 }
