@@ -23,7 +23,7 @@ jobs:
 
     # Override application.properties for CI only (Spring Boot reads these env vars)
     env:
-      SPRING_DATA_MONGODB_URI: mongodb://localhost:27017/transortdb
+      SPRING_MONGODB_URI: mongodb://localhost:27017/transortdb
       SERVER_PORT: 8080
 
     steps:
