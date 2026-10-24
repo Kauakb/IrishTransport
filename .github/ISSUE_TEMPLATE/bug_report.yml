@@ -1,0 +1,48 @@
+name: Bug report
+description: Something isn't working as expected
+labels: [bug, triage]
+body:
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Describe the bug and what you expected to happen instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to /transports
+        2. Search for "..."
+        3. See error
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Login / Register
+        - Transport stops (list, search, CRUD)
+        - Data import script
+        - Build / CI
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or error messages
+      description: Paste any stack trace or console output. Remove passwords and connection strings first.
+      render: shell
+
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: e.g. Windows 11, Java 17, Chrome
