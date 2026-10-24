@@ -73,8 +73,8 @@ com.ca.transport
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/transport.git
-cd transport
+git clone https://github.com/Kauakb/IrishTransport.git
+cd IrishTransport
 ```
 
 ### 2. Configure MongoDB Atlas
