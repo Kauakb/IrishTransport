@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Transport Stops</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"/>
+</head>
+<body>
+
+	<nav>
+    <span class="logo">Irish Transport</span>
+    <div>
+        <a href="/transports">Home</a>
+        <a href="/transports/new">Add Stop</a>
+        <form th:action="@{/logout}" method="post" style="display:inline;">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+            <button type="submit" style="background:none; border:none; color:white; cursor:pointer; font-size:15px;">Logout</button>
+        </form>
+    </div>
+	</nav>
+
+	<div class="hero">
+		<img src="https://www.railwaypro.com/wp/wp-content/uploads/2024/11/Iarnod-Eireann-new-DART-Fleet-launch1-1.jpg" alt="Irish Transport"/>
+		<div class="hero-text">
+			<h2>Irish Public Transport Network</h2>
+			<p>Browse and manage bus stop across Ireland</p>
+		</div>
+	</div>
+
+    <div class="container">
+    
+    	<div class="search-bar">
+    <form th:action="@{/transports}" method="get">
+        <input type="text" name="search" th:value="${search}" 
+               placeholder="Search by stop name..."/>
+        <button type="submit" class="btn">Search</button>
+        <a href="/transports" class="btn-cancel">Clear</a>
+    </form>
+</div>
+    
+        <h1>Irish Transport Stops</h1>
+        <a href="/transports/new" class="btn">+ Add New Stop</a>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ATCO Code</th>
+                    <th>Stop Name</th>
+                    <th>Street</th>
+                    <th>Locality</th>
+                    <th>Stop Type</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="transport : ${transports}">
+                    <td th:text="${transport.atcoCode}"></td>
+                    <td th:text="${transport.commonName}"></td>
+                    <td th:text="${transport.street}"></td>
+                    <td th:text="${transport.locality}"></td>
+                    <td th:text="${transport.stopType}"></td>
+                    <td th:text="${transport.status}"></td>
+                    <td>
+                        <a th:href="@{/transports/edit/{id}(id=${transport.id})}" class="btn-edit">Edit</a>
+                        <a th:href="@{/transports/delete/{id}(id=${transport.id})}" class="btn-delete"
+                           onclick="return confirm('Are you sure?')">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="pagination">
+    <a th:if="${currentPage > 0}" 
+       th:href="@{/transports(page=${currentPage - 1})}" class="btn">← Previous</a>
+    
+    <span>Page [[${currentPage + 1}]] of [[${totalPages}]]</span>
+    
+    <a th:if="${currentPage + 1 < totalPages}" 
+       th:href="@{/transports(page=${currentPage + 1})}" class="btn">Next →</a>
+</div>
+    </div>
+</body>
+</html>
